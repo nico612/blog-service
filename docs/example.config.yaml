@@ -1,3 +1,6 @@
+# 在项目中创建configs/config.yaml
+
+
 Server:
   RunMode: debug
   HttpPort: 8000

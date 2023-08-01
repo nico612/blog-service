@@ -189,6 +189,56 @@ $ go get -u github.com/spf13/viper
 ```
 
 ### 数据库连接
+数据库连接驱动
+```shell
+go get -u gorm.io/gorm
+go get -u gorm.io/driver/sqlite
+
+// 导入gorm和驱动
+import "gorm.io/gorm"
+import "gorm.io/driver/sqlite"
+
+```
 ### 日志写入
+日志框架
+
+```shell
+go get -u gopkg.in/natefinch/lumberjack.v2
+```
+
 ### 响应处理
 
+编写统一处理接口返回的响应处理方法，
+
+### 接口参数验证
+
+```shell
+go get github.com/go-playground/validator/v10
+
+```
+校验规则写在对应的结构体的字段标签上，常见的标签含义如下：
+
+标签	含义
+required	必填
+gt	大于
+gte	大于等于
+lt	小于
+lte	小于等于
+min	最小值
+max	最大值
+oneof	参数集内的其中之一
+len	长度要求与 len 给定的一致
+
+### 国际化处理
+编写中间件， go-playground/validator 默认的错误信息是英文，但我们的错误信息不一定是用的英文，有可能要简体中文
+可以通过中间件配合语言包的方式去实现这个功能
+
+
+## 模块开发
+完成了业务接口的入参校验的逻辑处理后，接下来进入业务模块的业务逻辑开发，
+
+功能	HTTP 方法	路径
+新增标签	POST	/tags
+删除指定标签	DELETE	/tags/:id
+更新指定标签	PUT	/tags/:id
+获取标签列表	GET	/tags

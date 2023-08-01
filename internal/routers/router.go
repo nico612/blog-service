@@ -11,6 +11,7 @@ func NewRouter() *gin.Engine {
 	// 路由中间件
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
+	//r.Use(middleware.Translations())
 
 	// 设置路由组
 	article := v1.NewArticle()

@@ -1,6 +1,4 @@
-# 在项目中创建configs/config.yaml
-
-
+# 在项目中创建configs/config.yaml, 然后将该配置填入，修改成自己的配置
 Server:
   RunMode: debug
   HttpPort: 8000

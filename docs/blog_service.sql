@@ -63,5 +63,5 @@ CREATE TABLE IF NOT EXISTS `blog_article_tag` (
     `modified_on` int(10) unsigned DEFAULT '0' COMMENT '修改时间',
     `modified_by` varchar(100) DEFAULT '' COMMENT '修改人',
     `deleted_on` int(10) unsigned DEFAULT '0' COMMENT '删除时间',
-    PRIMARY KEY ('id')
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4  COMMENT='文章标签关联'
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文章标签关联';

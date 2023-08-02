@@ -65,3 +65,24 @@ CREATE TABLE IF NOT EXISTS `blog_article_tag` (
     `deleted_on` int(10) unsigned DEFAULT '0' COMMENT '删除时间',
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='文章标签关联';
+
+# 创建JWT认证表
+
+CREATE TABLE `blog_auth` (
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+    `app_key` varchar(20) DEFAULT '' COMMENT '用于签发的认证信息的Key',
+    `app_secret` varchar(50) DEFAULT '' COMMENT '用与签发认证信息的Secret',
+    `created_on` int(10) unsigned DEFAULT '0' COMMENT '创建时间',
+    `created_by` varchar(100) DEFAULT  '' COMMENT  '创建人',
+    `modified_on` int(10) unsigned DEFAULT '0' COMMENT '修改时间',
+    `modified_by` varchar(100) DEFAULT '' COMMENT '修改人',
+    `deleted_on` int(10) unsigned DEFAULT '0' COMMENT '删除时间',
+    `is_del`    tinyint(3) unsigned DEFAULT '0' COMMENT '是否删除 0 未删除 1 已删除',
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='认证管理';
+
+# 插入认证信息
+# INSERT INTO `blog_service`.blog_auth
+#     (`id`,  `app_key`, `app_secret`, `created_on`, `created_by`, `modified_on`, `modified_by`, `deleted_on`)
+# VALUES
+#     (1, 'eddycjy', 'go-programming-tour-book', 0, 'eddycjy', 0, 'eddycjy', 0);

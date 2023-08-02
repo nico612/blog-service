@@ -2,7 +2,11 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/nico612/blog-service/global"
+	"github.com/nico612/blog-service/internal/middleware"
+	"github.com/nico612/blog-service/internal/routers/api"
 	v1 "github.com/nico612/blog-service/internal/routers/api/v1"
+	"net/http"
 )
 
 func NewRouter() *gin.Engine {
@@ -11,11 +15,21 @@ func NewRouter() *gin.Engine {
 	// 路由中间件
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
+	r.Use(middleware.JWT())
 	//r.Use(middleware.Translations())
 
 	// 设置路由组
 	article := v1.NewArticle()
 	tag := v1.NewTag()
+	upload := api.NewUpload()
+
+	// 文件上传
+	r.POST("/upload/file", upload.UploadFile)
+	// 提供静态资源的访问
+	r.StaticFS("/static", http.Dir(global.AppSetting.UploadSavePath))
+
+	// 获取认证
+	r.POST("/auth", api.GetAuth)
 
 	apiv1 := r.Group("/api/v1")
 	{
